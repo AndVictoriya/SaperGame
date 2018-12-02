@@ -5,10 +5,13 @@ Field::Field()
 {
 	cout << "Enter size field:" << endl;
 	cin >> SizeCell;
-	cout << endl;
+	if(SizeCell < 2 || SizeCell > 45)
+		throw exception("Wrong field size!");
+
 	cout << "Enter number of bombs:" << endl;
 	cin >> Bomb;
-	cout << endl;
+	if (Bomb > SizeCell*SizeCell)
+		throw exception("The number of bombs is greater than the field!");
 
 	GameField = new Cell* [SizeCell];										// Создает массив под игровое поле
 	for (int i = 0; i < SizeCell; i++)
@@ -82,6 +85,8 @@ void Field::Options()														// Выбор пользователя
 		int a, b;
 		cout << "Enter coordinates: " << endl;
 		cin >> a >> b;
+		if (a<0 || a>SizeCell || b<0 || b>SizeCell)
+			throw exception("Invalid coordinates!");
 
 		if (GameField[a - 1][b - 1].GetVisible() == 0)
 		{

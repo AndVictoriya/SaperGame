@@ -1,14 +1,19 @@
-using namespace std;
 #include "Field.h"
 
 int main()
 {
-	Field a;
-	a.ReferenceOnCell();
-	a.RandBomb();
-	a.BombInCell();
-	a.PrintField();
-	a.Options();
-	system("pause");
+	try
+	{
+		Field a;
+		a.ReferenceOnCell();
+		a.RandBomb();
+		a.BombInCell();
+		a.PrintField();
+		a.Options();
+	}
+	catch (const exception &ex)
+	{
+		cout << ex.what() << endl;
+	}
 	return 0;
 }
